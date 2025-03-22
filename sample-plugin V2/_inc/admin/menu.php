@@ -53,11 +53,16 @@ function wl_home_handler() {
 }
 
 function wl_setting_handler() {
-    if (isset($_POST['btn-submit'])) {
+     if (isset($_POST['btn-submit'])) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            var_dump($_POST['filter_word']);
+            if (!get_option('_ha_word')) {
+                add_option('_ha_word', $_POST['filter_word']);
+            } else {
+                update_option('_ha_word', $_POST['filter_word']);
+                //delete_option('_ha_word');
+            }
         }
-     }
+    }
     include HA_PLUGIN_VIEW."admin/setting.php";
 }
 
