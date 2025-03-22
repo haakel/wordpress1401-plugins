@@ -14,6 +14,7 @@ defined('ABSPATH') || exit;
 define('HA_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HA_PLUGIN_URL', plugin_dir_url(__FILE__));
 const HA_PLUGIN_INC = HA_PLUGIN_DIR . '_inc/';
+const HA_PLUGIN_VIEW = HA_PLUGIN_DIR . 'view/';
 const HA_PLUGIN_ASSETS = HA_PLUGIN_DIR . 'assets/';
 
 //echo HA_PLUGIN_INC;
