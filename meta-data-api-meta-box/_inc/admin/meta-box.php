@@ -30,7 +30,32 @@ function md_video_url_meta_box($post_id) {
     //     update_post_meta($post_id, '_md_video_url', $_POST['video_url']);
     // }
 
-    if(isset($_POST['video_url'])){
+    if(isset($_POST['video_url']) && isset($_POST['price'])){
     update_post_meta($post_id, '_md_video_url', $_POST['video_url']);
+    update_post_meta($post_id, '_md_price', $_POST['price']);
     }
+}
+
+//S18_E06
+add_action('add_meta_boxes', 'md_register_price_meta_box'); 
+add_action("save_post", "price_meta_box_html");
+
+function md_register_price_meta_box() {
+    add_meta_box(
+        'md_price_meta_box',
+        'قیمت',
+        'price_meta_box_html',
+        'post',
+        'normal',
+        'default'
+    );
+}
+
+function price_meta_box_html($post) {
+    ?>
+<!-- //echo ''; -->
+<label for="price">قیمت</label>
+<input type="text" value='<?php echo get_post_meta($post->ID, "_md_price", true) ?>' id="price" name="price"
+    placeholder="قیمت را وارد نماييد">
+<?php
 }
