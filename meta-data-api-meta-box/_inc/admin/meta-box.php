@@ -29,10 +29,12 @@ function md_video_url_meta_box($post_id) {
     // } else {
     //     update_post_meta($post_id, '_md_video_url', $_POST['video_url']);
     // }
-
-    if(isset($_POST['video_url']) && isset($_POST['price'])){
-    update_post_meta($post_id, '_md_video_url', $_POST['video_url']);
-    update_post_meta($post_id, '_md_price', $_POST['price']);
+    wp_nonce_field("video_url", "video_urls");
+    if (!empty($_POST['video_url']) || !empty($_POST['price'])) {
+        $video_url = sanitize_text_field($_POST['video_url']);
+        $price = sanitize_text_field($_POST['price']);
+        update_post_meta($post_id, '_md_video_url', $video_url);
+        update_post_meta($post_id, '_md_price', $price);
     }
 }
 
