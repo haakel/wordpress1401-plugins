@@ -26,6 +26,7 @@ const WL_PLUGIN_ASSETS = WL_PLUGIN_DIR . 'assets/';
 
 if ( is_admin() ) {
     include WL_PLUGIN_INC . 'admin/menus.php';
+    include WL_PLUGIN_INC . 'admin/custom_menu_setting.php';
 } else {
 
 }
